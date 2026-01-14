@@ -20,11 +20,11 @@ function App() {
   }, [])
 
   // Create random grid
-  const createRandomGrid = useCallback((rows: number, cols: number) => {
+  const createRandomGrid = (rows: number, cols: number) => {
     return Array.from({ length: rows }, () =>
       Array.from({ length: cols }, () => Math.random() < INITIAL_DENSITY)
     )
-  }, [])
+  }
 
   const [grid, setGrid] = useState(() =>
     createEmptyGrid(dimensions.rows, dimensions.cols)
@@ -35,9 +35,9 @@ function App() {
   const [isPainting, setIsPainting] = useState(false)
 
   // Check if grid is empty
-  const isGridEmpty = useCallback((grid: boolean[][]) => {
+  const isGridEmpty = (grid: boolean[][]) => {
     return grid.every((row) => row.every((cell) => !cell))
-  }, [])
+  }
 
   // Handle window resize
   useEffect(() => {
